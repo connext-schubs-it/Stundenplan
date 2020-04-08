@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Stundenplan.Klassen
 {
-    class Wochenplan
+    public class Wochenplan
     {
-        public Schultag[] Schultage { get; set; }
+        public List<Schultag> Schultage { get; set; }
 
-        public Wochenplan(Schultag[] Schultage)
+        public Wochenplan(List<Schultag> schultage)
         {
-            Schultage = Schultage;
+            Schultage = schultage;
         }
     }
 }
