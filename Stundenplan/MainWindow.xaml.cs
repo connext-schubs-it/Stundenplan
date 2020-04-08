@@ -44,7 +44,7 @@ namespace Stundenplan
             });
             Schultag freitag = new Schultag("Freitag", new Stunde[]
             {
-                new Stunde("Deutsch"),
+                new Stunde("Deutsch", "Test"),
             });
 
             Wochenplan = new WochenplanReihe(montag, dienstag, mittwoch,donnerstag,freitag);
@@ -56,6 +56,7 @@ namespace Stundenplan
         {
             Button clickedButton = (Button)sender;
             AusgewaehlteStunde = (Stunde)clickedButton.DataContext;
+            new StundeAnsicht(AusgewaehlteStunde).Show();
         }
     }
 

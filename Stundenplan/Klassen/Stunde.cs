@@ -10,9 +10,12 @@ namespace Stundenplan.Klassen
     {
         public string Titel { get; set; }
 
-        public Stunde(string titel)
+        public string Details { get; set; }
+
+        public Stunde(string titel, string details = "")
         {
             Titel = titel;
+            Details = details;
         }
     }
 
