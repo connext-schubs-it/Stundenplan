@@ -37,5 +37,12 @@ namespace Stundenplan
 
          InitializeComponent();
       }
+
+      private void Window_Loaded(object sender, RoutedEventArgs e)
+      {
+         // Window-Position: TopLeft-Corner to Mouse-Position
+         this.Top = Mouse.GetPosition(null).Y;
+         this.Left = Mouse.GetPosition(null).X;
+      }
    }
 }

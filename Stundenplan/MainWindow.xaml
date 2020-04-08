@@ -10,7 +10,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="{Binding ElementName=ThisWindow, Path=AusgewaehlteStunde.Titel}" />
+        <!--<TextBlock Text="{Binding ElementName=ThisWindow, Path=AusgewaehlteStunde.Titel}" />-->
 
         <!--Tage-->
         <ItemsControl Grid.Row="1"
