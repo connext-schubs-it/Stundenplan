@@ -1,0 +1,26 @@
+﻿<Window x:Class="Stundenplan.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Stundenplan">
+    <Grid Width="400">
+        <DataGrid x:Name="stundenplanData" CanUserSortColumns="False" CanUserReorderColumns="False" CanUserResizeColumns="False" AutoGenerateColumns="False" IsReadOnly="True" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Montag" Binding="{Binding Montag}">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Dienstag" Binding="{Binding Dienstag}">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Mittwoch" Binding="{Binding Mittwoch}">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Donnerstag" Binding="{Binding Donnerstag}">
+
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Freitag" Binding="{Binding Freitag}">
+
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>
