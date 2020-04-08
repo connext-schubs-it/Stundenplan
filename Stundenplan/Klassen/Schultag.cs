@@ -10,9 +10,9 @@ namespace Stundenplan.Klassen
     {
         public string Wochentag { get; set; }
 
-        public Stunde[] Stunden { get; set; }
+        public List<Stunde> Stunden { get; set; }
 
-        public Schultag(string wochentag, Stunde[] Schulstunden)
+        public Schultag(string wochentag, List<Stunde> Schulstunden)
         {
             Wochentag = wochentag;
             Stunden = Schulstunden;

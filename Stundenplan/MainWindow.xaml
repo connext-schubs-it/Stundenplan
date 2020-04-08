@@ -54,7 +54,7 @@
                                                 Padding="3,1">
                                             <Grid>
                                                 <TextBlock Text="{Binding Titel}"
-                                                           TextWrapping="Wrap" />
+                                                           TextWrapping="Wrap"/>
                                             </Grid>
                                         </Button>
                                     </DataTemplate>
