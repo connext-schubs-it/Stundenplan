@@ -13,13 +13,6 @@
               FontSize="14"
               FontWeight="Bold"/>
          <LineBreak/>
-         <Run Text="Details zur Unterrichtsstunde:"/>
       </TextBlock>
-      <TextBox Text="{Binding ElementName=ThisStundeAnsicht, Path=AusgewaehlteStunde.Details}"
-               Margin="0,68,0,10"
-               TextWrapping="Wrap"
-               AcceptsReturn="True"
-               VerticalScrollBarVisibility="Auto">
-      </TextBox>
    </Grid>
 </Window>

@@ -44,7 +44,7 @@ namespace Stundenplan
             });
             Schultag freitag = new Schultag("Freitag", new Stunde[]
             {
-                new Stunde("Deutsch", "Test"),
+                new Stunde("Deutsch"),
             });
 
             Wochenplan = new WochenplanReihe(montag, dienstag, mittwoch,donnerstag,freitag);
