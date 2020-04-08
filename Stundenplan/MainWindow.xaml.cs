@@ -47,16 +47,9 @@ namespace Stundenplan
                 new Stunde("Deutsch", "#FFFDF5E6", "Herr Müller", "D123"),
             });
 
-            Wochenplan = new WochenplanReihe(montag, dienstag, mittwoch,donnerstag,freitag);
+            Wochenplan = new WochenplanReihe(montag, dienstag, mittwoch, donnerstag, freitag);
 
             InitializeComponent();
-        }
-
-        private void Stunde_Click(object sender, RoutedEventArgs e)
-        {
-            Button clickedButton = (Button)sender;
-            AusgewaehlteStunde = (Stunde)clickedButton.DataContext;
-            new StundeAnsicht(AusgewaehlteStunde).Show();
         }
     }
 
