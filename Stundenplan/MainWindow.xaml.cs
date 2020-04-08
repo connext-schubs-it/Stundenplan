@@ -1,4 +1,5 @@
 ﻿using Stundenplan.Klassen;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
@@ -23,13 +24,17 @@ namespace Stundenplan
         public static readonly DependencyProperty AusgewaehlteStundeProperty =
             DependencyProperty.Register("AusgewaehlteStunde", typeof(Stunde), typeof(MainWindow), new PropertyMetadata(null));
 
-        public MainWindow()
-        {
+      public MainWindow()
+      {
+         int kalenderwoche = (DateTime.Now.DayOfYear / 7) + 1;
+
+         if (kalenderwoche % 2 == 0)
+         {
             Schultag montag = new Schultag("Montag", new Stunde[]
-            {
+              {
                 new Stunde("Deutsch"),
                 new Stunde("Mathe"),
-            });
+              });
             Schultag dienstag = new Schultag("Dienstag", new Stunde[]
             {
                 new Stunde("Sport"),
@@ -46,11 +51,37 @@ namespace Stundenplan
             {
                 new Stunde("Deutsch"),
             });
+            Wochenplan = new WochenplanReihe(montag, dienstag, mittwoch, donnerstag, freitag);
+         }
+         else
+         {
+            Schultag montag = new Schultag("Montag", new Stunde[]
+            {
+                new Stunde("Bio"),
+                new Stunde("Sport"),
+            });
+            Schultag dienstag = new Schultag("Dienstag", new Stunde[]
+            {
+                new Stunde("Algebra"),
+            });
+            Schultag mittwoch = new Schultag("Mittwoch", new Stunde[]
+            {
+                new Stunde("GAI"),
+            });
+            Schultag donnerstag = new Schultag("Donnerstag", new Stunde[]
+            {
+                new Stunde("Frei"),
+            });
+            Schultag freitag = new Schultag("Freitag", new Stunde[]
+            {
+                new Stunde("Frei"),
+            });
+         Wochenplan = new WochenplanReihe(montag, dienstag, mittwoch, donnerstag, freitag);
+         }
 
-            Wochenplan = new WochenplanReihe(montag, dienstag, mittwoch,donnerstag,freitag);
 
-            InitializeComponent();
-        }
+         InitializeComponent();
+      }
 
         private void Stunde_Click(object sender, RoutedEventArgs e)
         {
