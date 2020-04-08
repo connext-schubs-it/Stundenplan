@@ -11,14 +11,18 @@
         </Grid.RowDefinitions>
 
         <TextBlock HorizontalAlignment="Center" FontSize="20" Margin="0,20,0,20">Stundenplan</TextBlock>
-        <Button HorizontalAlignment="Right" Margin="0,20,10,20" Click="WochenansichtAendern">Wochenansicht wechseln</Button>
+        <Button HorizontalAlignment="Right" Margin="0,20,10,50" Click="WochenansichtAendern">Wochenansicht wechseln</Button>
+
+        <Button HorizontalAlignment="Center" Margin="0,60,250,20" VerticalAlignment="Top" Click="Zurueck">&lt;</Button>
+        <TextBlock HorizontalAlignment="Center" FontSize="20" Margin="0,56,0,20" Text="{Binding ElementName=ThisWindow, Path=Zeitraum}"></TextBlock>
+        <Button HorizontalAlignment="Center" Margin="250,60,0,20" VerticalAlignment="Top" Click="Weiter">&gt;</Button>
 
         <!--Tage-->
         <ItemsControl Grid.Row="1"
                       ItemsSource="{Binding ElementName=ThisWindow, Path=WochenplanData.Schultage}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                        <UniformGrid Columns="{Binding ElementName=ThisWindow, Path=AnzahlSpalten}"/>
+                    <UniformGrid Columns="{Binding ElementName=ThisWindow, Path=AnzahlSpalten}"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 
@@ -49,8 +53,7 @@
                                           Margin="0,7,0,0">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate DataType="{x:Type Klassen:Stunde}">
-                                        <Button Click="Stunde_Click"
-                                                Margin="3"
+                                        <Button Margin="3"
                                                 Padding="3,1">
                                             <Grid>
                                                 <TextBlock Text="{Binding Titel}"
