@@ -27,24 +27,24 @@ namespace Stundenplan
         {
             Schultag montag = new Schultag("Montag", new Stunde[]
             {
-                new Stunde("Deutsch"),
-                new Stunde("Mathe"),
+                new Stunde("Deutsch","Tomato"),
+                new Stunde("Mathe","PeachPuff"),
             });
             Schultag dienstag = new Schultag("Dienstag", new Stunde[]
             {
-                new Stunde("Sport"),
+                new Stunde("Sport","Salmon"),
             });
             Schultag mittwoch = new Schultag("Mittwoch", new Stunde[]
             {
-                new Stunde("Englisch"),
+                new Stunde("Englisch","Wheat"),
             });
             Schultag donnerstag = new Schultag("Donnerstag", new Stunde[]
             {
-                new Stunde("Deutsch"),
+                new Stunde("Deutsch","BlanchedAlmond"),
             });
             Schultag freitag = new Schultag("Freitag", new Stunde[]
             {
-                new Stunde("Deutsch"),
+                new Stunde("Deutsch","#FFFDF5E6"),
             });
 
             Wochenplan = new WochenplanReihe(montag, dienstag, mittwoch,donnerstag,freitag);
