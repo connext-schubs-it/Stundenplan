@@ -2,6 +2,7 @@
 using Stundenplan.Klassen;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Stundenplan
 {
@@ -64,13 +65,18 @@ namespace Stundenplan
 
         private void generiereWochenplan(int? wochentag)
         {
+            Fach Mathe = new Fach("Mathe", Brushes.Blue, "Herr Müller");
+            Fach Englisch = new Fach("Englisch", Brushes.Red, "Frau Meier");
+            Fach Sport = new Fach("Sport", Brushes.Green, "Herr Kamp");
+            Fach Informatik = new Fach("Informatik", Brushes.Cyan, "Frau Reich");
+
             liste = new List<Schultag>();
             if (wochentag == 1 || wochentag == null)
             {
                 Schultag montag = new Schultag("Montag", new Stunde[]
                 {
-                    new Stunde("Deutsch", "Tomato", "Herr Müller", "D123"),
-                    new Stunde("Mathe", "PeachPuff", "Herr Meier", "D123")
+                    new Stunde(Mathe, "D123"),
+                    new Stunde(Englisch, "D123")
                 });
                 // hier dann montag.Sort((x,y) => )
                 liste.Add(montag);
@@ -79,7 +85,7 @@ namespace Stundenplan
             {
                 Schultag dienstag = new Schultag("Dienstag", new Stunde[]
                 {
-                    new Stunde("Sport", "Salmon", "Herr Müller", "Sporthalle")
+                    new Stunde(Sport, "Sporthalle")
                 });
                 liste.Add(dienstag);
             }
@@ -87,7 +93,7 @@ namespace Stundenplan
             {
                 Schultag mittwoch = new Schultag("Mittwoch", new Stunde[]
                 {
-                    new Stunde("Englisch", "Wheat", "Frau Test", "D212")
+                    new Stunde(Englisch, "D212")
                 });
                 liste.Add(mittwoch);
             }
@@ -95,7 +101,7 @@ namespace Stundenplan
             {
                 Schultag donnerstag = new Schultag("Donnerstag", new Stunde[]
                 {
-                    new Stunde("Deutsch", "BlanchedAlmond", "Herr Müller", "D123")
+                    new Stunde(Informatik, "D123")
                 });
                 liste.Add(donnerstag);
             }
@@ -103,7 +109,7 @@ namespace Stundenplan
             {
                 Schultag freitag = new Schultag("Freitag", new Stunde[]
                 {
-                    new Stunde("Deutsch", "#FFFDF5E6", "Herr Müller", "D123")
+                    new Stunde(Informatik, "D123")
                 });
                 liste.Add(freitag);
             }

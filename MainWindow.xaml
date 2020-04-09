@@ -54,11 +54,11 @@
                                           Margin="0,7,0,0">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate DataType="{x:Type Klassen:Stunde}">
-                                        <Button Background="{Binding Color}"
+                                        <Button Background="{Binding Fach.Color}"
                                                 Margin="3"
                                                 Padding="3,1">
                                             <Button.Content>
-                                                <TextBlock Text="{Binding Titel}" TextWrapping="Wrap"/>
+                                                <TextBlock Text="{Binding Fach.Titel}" TextWrapping="Wrap"/>
                                             </Button.Content>
                                             <Button.ToolTip>
                                                 <TextBlock>
@@ -72,7 +72,7 @@
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
                                                         <TextBlock Text="Lehrer" FontWeight="Bold"/>
-                                                        <TextBlock Grid.Column="1" Text="{Binding Lehrer}"/>
+                                                        <TextBlock Grid.Column="1" Text="{Binding Fach.Lehrer}"/>
                                                         <TextBlock Grid.Row="1" Text="Raum" FontWeight="Bold"/>
                                                         <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Raum}"/>
                                                     </Grid>
