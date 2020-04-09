@@ -65,7 +65,7 @@ namespace Stundenplan
 
         private void generiereWochenplan(int? wochentag)
         {
-            Fach Mathe = new Fach("Mathe", Brushes.Blue, "Herr Müller");
+            Fach Mathe = new Fach("Mathe", Brushes.DeepSkyBlue, "Herr Müller");
             Fach Englisch = new Fach("Englisch", Brushes.Red, "Frau Meier");
             Fach Sport = new Fach("Sport", Brushes.Green, "Herr Kamp");
             Fach Informatik = new Fach("Informatik", Brushes.Cyan, "Frau Reich");
