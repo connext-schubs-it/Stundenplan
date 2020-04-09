@@ -9,12 +9,12 @@ namespace Stundenplan.Klassen
     public class Stunde
     {
         public string Titel { get; set; }
-      public int aStunde { get; set; }
+      public int StundeID { get; set; }
 
       public Stunde(string titel, int stunde)
         {
             Titel = titel;
-            aStunde = stunde;
+            StundeID = stunde;
       }
     }
 

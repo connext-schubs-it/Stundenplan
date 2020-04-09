@@ -53,10 +53,12 @@ namespace Stundenplan
          if (kalenderwoche % 2 == 0)
          {
             montag.Stunden.Add(new Stunde("Deutsch", 2));
+            montag.Stunden.Sort((x, y) => x.StundeID > y.StundeID ? 1 : -1);
          }
          else
          {
             montag.Stunden.Add(new Stunde("Englisch", 2));
+            montag.Stunden.Sort((x, y) => x.StundeID > y.StundeID ? 1 : -1);
          }
 
 
