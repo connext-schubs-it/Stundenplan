@@ -11,11 +11,12 @@
         </Grid.RowDefinitions>
 
         <TextBlock HorizontalAlignment="Center" FontSize="20" Margin="0,20,0,20">Stundenplan</TextBlock>
-        <Button HorizontalAlignment="Right" Margin="0,20,10,50" Click="WochenansichtAendern">Wochenansicht wechseln</Button>
+        <Button HorizontalAlignment="Right" Margin="0,20,10,50" Click="zurTagesansichtWechseln">Tagesansicht</Button>
+        <Button HorizontalAlignment="Right" Margin="0,20,100,50" Click="zurWochenansichtWechseln">Wochenansicht</Button>
 
-        <Button HorizontalAlignment="Center" Margin="0,60,250,20" VerticalAlignment="Top" Click="Zurueck">&lt;</Button>
+        <Button HorizontalAlignment="Center" Margin="0,60,250,20" VerticalAlignment="Top" Click="Zurueck" FontSize="15" FontWeight="Bold">&lt;</Button>
         <TextBlock HorizontalAlignment="Center" FontSize="20" Margin="0,56,0,20" Text="{Binding ElementName=ThisWindow, Path=Zeitraum}"></TextBlock>
-        <Button HorizontalAlignment="Center" Margin="250,60,0,20" VerticalAlignment="Top" Click="Weiter">&gt;</Button>
+        <Button HorizontalAlignment="Center" Margin="250,60,0,20" VerticalAlignment="Top" Click="Weiter" FontSize="15" FontWeight="Bold">&gt;</Button>
 
         <!--Tage-->
         <ItemsControl Grid.Row="1"
