@@ -2,13 +2,16 @@
 {
     public class Stunde
     {
-        public Fach Fach { get; set; }
         public string Raum { get; set; }
         public int StundenID { get; set; }
+        
+        public string Titel { get; set; }
+        public string Lehrer { get; set; }
 
-        public Stunde(Fach fach, string raum, int stundenID)
+        public Stunde(string titel, string lehrer, string raum, int stundenID)
         {
-            Fach = fach;
+            Titel = titel;
+            Lehrer = lehrer;
             Raum = raum;
             StundenID = stundenID;
         }

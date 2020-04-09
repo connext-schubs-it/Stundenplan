@@ -11,28 +11,25 @@
         </Grid.RowDefinitions>
 
         <TextBlock HorizontalAlignment="Center" FontSize="20" Margin="0,20,0,20">Stundenplan</TextBlock>
-        <Button HorizontalAlignment="Right" Margin="0,20,10,50" Click="zurTagesansichtWechseln">Tagesansicht</Button>
-        <Button HorizontalAlignment="Right" Margin="0,20,100,50" Click="zurWochenansichtWechseln">Wochenansicht</Button>
 
-        <Button HorizontalAlignment="Center" Margin="0,60,250,20" VerticalAlignment="Top" Click="Zurueck" FontSize="15" FontWeight="Bold">&lt;</Button>
-        <TextBlock HorizontalAlignment="Center" FontSize="20" Margin="0,56,0,20" Text="{Binding ElementName=ThisWindow, Path=Zeitraum}"></TextBlock>
-        <Button HorizontalAlignment="Center" Margin="250,60,0,20" VerticalAlignment="Top" Click="Weiter" FontSize="15" FontWeight="Bold">&gt;</Button>
-
-        <!--Tage-->
+        <!--Wochenplan-->
         <ItemsControl Grid.Row="1"
                       ItemsSource="{Binding ElementName=ThisWindow, Path=WochenplanData.Schultage}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <UniformGrid Columns="{Binding ElementName=ThisWindow, Path=AnzahlSpalten}"/>
+                    <!--Columns bestimmt wieviele Spalten angezeigt werden-->
+                    <UniformGrid Columns="5"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
 
+            <!--Spalten-->
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type Klassen:Schultag}">
                     <Border BorderBrush="Black"
                             BorderThickness="2">
                         <HeaderedContentControl Header="{Binding Wochentag}"
                                                 HorizontalAlignment="Stretch">
+                            <!--Tagestitel-->
                             <HeaderedContentControl.HeaderTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding}"
@@ -54,12 +51,14 @@
                                           Margin="0,7,0,0">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate DataType="{x:Type Klassen:Stunde}">
-                                        <Button Background="{Binding Fach.Color}"
+                                        <!--Mittels Background setzt du den Hintergrund eines Buttons-->
+                                        <Button Background="White"
                                                 Margin="3"
                                                 Padding="3,1">
                                             <Button.Content>
-                                                <TextBlock Text="{Binding Fach.Titel}" TextWrapping="Wrap"/>
+                                                <TextBlock Text="{Binding Titel}" TextWrapping="Wrap"/>
                                             </Button.Content>
+                                            <!--Tooltip zu den jeweiligen Fächern-->
                                             <Button.ToolTip>
                                                 <TextBlock>
                                                     <Grid>
@@ -72,9 +71,7 @@
                                                             <RowDefinition Height="auto"/>
                                                         </Grid.RowDefinitions>
                                                         <TextBlock Text="Lehrer" FontWeight="Bold"/>
-                                                        <TextBlock Grid.Column="1" Text="{Binding Fach.Lehrer}"/>
                                                         <TextBlock Grid.Row="1" Text="Raum" FontWeight="Bold"/>
-                                                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Raum}"/>
                                                     </Grid>
                                                 </TextBlock>
                                             </Button.ToolTip>
