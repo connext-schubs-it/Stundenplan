@@ -2,6 +2,7 @@
 using Stundenplan.Klassen;
 using System.Collections.Generic;
 using System.Windows;
+using System.Windows.Media;
 
 namespace Stundenplan
 {
@@ -64,24 +65,28 @@ namespace Stundenplan
 
         private void generiereWochenplan(int? wochentag)
         {
+            Fach Mathe = new Fach("Mathe", Brushes.Blue, "Herr Müller");
+            Fach Englisch = new Fach("Englisch", Brushes.Red, "Frau Meier");
+            Fach Sport = new Fach("Sport", Brushes.Green, "Herr Kamp");
+            Fach Informatik = new Fach("Informatik", Brushes.Cyan, "Frau Reich");
+
             var kalenderwoche = (ausgewähltesDatum.DayOfYear / 7) + 1;
             var liste = new List<Schultag>();
-            //Bestehendes Grundgerüst für jede Woche aufbauen
             if (wochentag == 1 || wochentag == null)
             { 
                 Schultag montag = new Schultag("Montag", new List<Stunde> 
                 {
-                    new Stunde("Deutsch", "Tomato", "Herr Müller", "D123", 1), 
-                    new Stunde("Mathe", "PeachPuff", "Herr Meier", "D123", 3)
+                    new Stunde(Mathe, "D123", 1), 
+                    new Stunde(Englisch, "D123", 3)
 
                 }); 
                 if (kalenderwoche % 2 == 0) 
                 { 
-                    montag.Stunden.Add(new Stunde("Englisch", "LightBlue", "Herr Witkowski", "B039", 2));
+                    montag.Stunden.Add(new Stunde(Englisch, "B039", 2));
                 }
                 else
                 { 
-                    montag.Stunden.Add(new Stunde("Englisch", "LightBlue", "Herr Witkowski", "B039", 2));
+                    montag.Stunden.Add(new Stunde(Mathe, "B039", 2));
                 } 
                 montag.Stunden.Sort((x, y) => x.StundenID > y.StundenID ? 1 : -1); 
                 liste.Add(montag);
@@ -90,7 +95,7 @@ namespace Stundenplan
             {
                 Schultag dienstag = new Schultag("Dienstag", new List<Stunde>
                 {
-                    new Stunde("Sport", "Salmon", "Herr Müller", "Sporthalle",1)
+                    new Stunde(Sport, "Sporthalle",1)
                 }); 
                 dienstag.Stunden.Sort((x, y) => x.StundenID > y.StundenID ? 1 : -1); 
                 liste.Add(dienstag);
@@ -99,7 +104,7 @@ namespace Stundenplan
             {
                 Schultag mittwoch = new Schultag("Mittwoch", new List<Stunde>
                 {
-                    new Stunde("Englisch", "Wheat", "Frau Test", "D212",1)
+                    new Stunde(Englisch, "D212",1)
                 }); 
                 mittwoch.Stunden.Sort((x, y) => x.StundenID > y.StundenID ? 1 : -1); 
                 liste.Add(mittwoch);
@@ -108,7 +113,7 @@ namespace Stundenplan
             {
                 Schultag donnerstag = new Schultag("Donnerstag", new List<Stunde>
                 {
-                    new Stunde("Deutsch", "BlanchedAlmond", "Herr Müller", "D123",1)
+                    new Stunde(Informatik, "D123",1)
                 }); 
                 donnerstag.Stunden.Sort((x, y) => x.StundenID > y.StundenID ? 1 : -1); 
                 liste.Add(donnerstag);
@@ -117,7 +122,7 @@ namespace Stundenplan
             {
                 Schultag freitag = new Schultag("Freitag", new List<Stunde>
                 {
-                    new Stunde("Deutsch", "#FFFDF5E6", "Herr Müller", "D123",1)
+                    new Stunde(Informatik, "D123",1)
                 }); 
                 freitag.Stunden.Sort((x, y) => x.StundenID > y.StundenID ? 1 : -1); 
                 liste.Add(freitag);
