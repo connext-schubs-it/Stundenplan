@@ -132,7 +132,14 @@ namespace Stundenplan
         {
             if (AnzahlSpalten == 1)
             {
-                ausgewähltesDatum = ausgewähltesDatum.AddDays(1);
+                if ((int) ausgewähltesDatum.DayOfWeek == 5)
+                {
+                    ausgewähltesDatum = ausgewähltesDatum.AddDays(3);
+                }
+                else
+                {
+                    ausgewähltesDatum = ausgewähltesDatum.AddDays(1);
+                }
                 generiereWochenplan((int)ausgewähltesDatum.DayOfWeek);
                 getZeitraum();
             }
@@ -147,7 +154,14 @@ namespace Stundenplan
         {
             if (AnzahlSpalten == 1)
             {
-                ausgewähltesDatum = ausgewähltesDatum.AddDays(-1);
+                if ((int) ausgewähltesDatum.DayOfWeek == 1)
+                {
+                    ausgewähltesDatum = ausgewähltesDatum.AddDays(-3);
+                }
+                else
+                {
+                    ausgewähltesDatum = ausgewähltesDatum.AddDays(-1);
+                }
                 generiereWochenplan((int)ausgewähltesDatum.DayOfWeek);
                 getZeitraum();
             }
