@@ -27,35 +27,29 @@ namespace Stundenplan
         {
             Schultag montag = new Schultag("Montag", new Stunde[]
             {
-                new Stunde("Deutsch","Tomato"),
-                new Stunde("Mathe","PeachPuff"),
+                new Stunde("Deutsch", "Tomato", "Herr Müller", "D123"),
+                new Stunde("Mathe", "PeachPuff", "Herr Meier", "D123"),
             });
             Schultag dienstag = new Schultag("Dienstag", new Stunde[]
             {
-                new Stunde("Sport","Salmon"),
+                new Stunde("Sport", "Salmon", "Herr Müller", "Sporthalle"),
             });
             Schultag mittwoch = new Schultag("Mittwoch", new Stunde[]
             {
-                new Stunde("Englisch","Wheat"),
+                new Stunde("Englisch", "Wheat", "Frau Test", "D212"),
             });
             Schultag donnerstag = new Schultag("Donnerstag", new Stunde[]
             {
-                new Stunde("Deutsch","BlanchedAlmond"),
+                new Stunde("Deutsch", "BlanchedAlmond", "Herr Müller", "D123"),
             });
             Schultag freitag = new Schultag("Freitag", new Stunde[]
             {
-                new Stunde("Deutsch","#FFFDF5E6"),
+                new Stunde("Deutsch", "#FFFDF5E6", "Herr Müller", "D123"),
             });
 
-            Wochenplan = new WochenplanReihe(montag, dienstag, mittwoch,donnerstag,freitag);
+            Wochenplan = new WochenplanReihe(montag, dienstag, mittwoch, donnerstag, freitag);
 
             InitializeComponent();
-        }
-
-        private void Stunde_Click(object sender, RoutedEventArgs e)
-        {
-            Button clickedButton = (Button)sender;
-            AusgewaehlteStunde = (Stunde)clickedButton.DataContext;
         }
     }
 
