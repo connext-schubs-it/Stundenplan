@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using Stundenplan.Klassen;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace Stundenplan
@@ -8,33 +10,158 @@ namespace Stundenplan
     /// </summary>
     public partial class MainWindow : Window
     {
-        private WochenplanReihe[] wochenplan;
-        public MainWindow()
+        private DateTime ausgewähltesDatum = DateTime.Now;
+        private List<Schultag> liste;
+        public Wochenplan WochenplanData
         {
-            InitializeComponent();
-            wochenplan = new WochenplanReihe[]{
-                new WochenplanReihe("Deutsch","Musik", "Mathe", "Informatik","Englisch")
-            };
-            stundenplanData.ItemsSource = wochenplan;
+            get => (Wochenplan)GetValue(WochenplanDataProperty);
+            set => SetValue(WochenplanDataProperty, value);
         }
 
-    }
+        // Using a DependencyProperty as the backing store for AusgewaehlteStunde.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty WochenplanDataProperty =
+            DependencyProperty.Register("WochenplanData", typeof(Wochenplan), typeof(MainWindow), new PropertyMetadata(null));
 
-    public class WochenplanReihe
-    {
-        public string Montag { get; set; }
-        public string Dienstag { get; set; }
-        public string Mittwoch { get; set; }
-        public string Donnerstag { get; set; }
-        public string Freitag { get; set; }
-
-        public WochenplanReihe(string montag, string dienstag, string mittwoch, string donnerstag, string freitag)
+        public int AnzahlSpalten
         {
-            Montag = montag;
-            Dienstag = dienstag;
-            Mittwoch = mittwoch;
-            Donnerstag = donnerstag;
-            Freitag = freitag;
+            get => (int)GetValue(AnzahlSpaltenProperty);
+            set => SetValue(AnzahlSpaltenProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for AusgewaehlteStunde.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty AnzahlSpaltenProperty =
+            DependencyProperty.Register("AnzahlSpalten", typeof(int), typeof(MainWindow), new PropertyMetadata(5));
+
+        public string Zeitraum
+        {
+            get => (string)GetValue(ZeitraumProperty);
+            set => SetValue(ZeitraumProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for AusgewaehlteStunde.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ZeitraumProperty =
+            DependencyProperty.Register("Zeitraum", typeof(string), typeof(MainWindow), new PropertyMetadata(null));
+
+        public MainWindow()
+        {
+            generiereWochenplan(null);
+            InitializeComponent();
+        }
+
+        private void getZeitraum()
+        {
+            if (AnzahlSpalten == 1)
+            {
+                Zeitraum = ausgewähltesDatum.ToString("d");
+            }
+            else
+            {
+                DateTime montag = ausgewähltesDatum.AddDays(-(int) ausgewähltesDatum.DayOfWeek + 1);
+                DateTime sonntag = ausgewähltesDatum.AddDays(7 - (int) ausgewähltesDatum.DayOfWeek);
+                Zeitraum = montag.ToString("d") + " - " + sonntag.ToString("d");
+            }
+        }
+
+        private void generiereWochenplan(int? wochentag)
+        {
+            liste = new List<Schultag>();
+            if (wochentag == 1 || wochentag == null)
+            {
+                Schultag montag = new Schultag("Montag", new Stunde[]
+                {
+                    new Stunde("Deutsch", "Tomato", "Herr Müller", "D123"),
+                    new Stunde("Mathe", "PeachPuff", "Herr Meier", "D123")
+                });
+                // hier dann montag.Sort((x,y) => )
+                liste.Add(montag);
+            }
+            if (wochentag == 2 || wochentag == null)
+            {
+                Schultag dienstag = new Schultag("Dienstag", new Stunde[]
+                {
+                    new Stunde("Sport", "Salmon", "Herr Müller", "Sporthalle")
+                });
+                liste.Add(dienstag);
+            }
+            if (wochentag == 3 || wochentag == null)
+            {
+                Schultag mittwoch = new Schultag("Mittwoch", new Stunde[]
+                {
+                    new Stunde("Englisch", "Wheat", "Frau Test", "D212")
+                });
+                liste.Add(mittwoch);
+            }
+            if (wochentag == 4 || wochentag == null)
+            {
+                Schultag donnerstag = new Schultag("Donnerstag", new Stunde[]
+                {
+                    new Stunde("Deutsch", "BlanchedAlmond", "Herr Müller", "D123")
+                });
+                liste.Add(donnerstag);
+            }
+            if (wochentag == 5 || wochentag == null)
+            {
+                Schultag freitag = new Schultag("Freitag", new Stunde[]
+                {
+                    new Stunde("Deutsch", "#FFFDF5E6", "Herr Müller", "D123")
+                });
+                liste.Add(freitag);
+            }
+            WochenplanData = new Wochenplan(liste);
+            getZeitraum();
+        }
+
+        private void zurTagesansichtWechseln(object sender, RoutedEventArgs e)
+        {
+            AnzahlSpalten = 1;
+            generiereWochenplan((int)ausgewähltesDatum.DayOfWeek);
+        }
+
+        private void zurWochenansichtWechseln(object sender, RoutedEventArgs e)
+        {
+            AnzahlSpalten = 5;
+            generiereWochenplan(null);
+        }
+
+        private void Weiter(object sender, RoutedEventArgs e)
+        {
+            if (AnzahlSpalten == 1)
+            {
+                if ((int) ausgewähltesDatum.DayOfWeek == 5)
+                {
+                    ausgewähltesDatum = ausgewähltesDatum.AddDays(3);
+                }
+                else
+                {
+                    ausgewähltesDatum = ausgewähltesDatum.AddDays(1);
+                }
+                generiereWochenplan((int)ausgewähltesDatum.DayOfWeek);
+            }
+            else
+            {
+                ausgewähltesDatum = ausgewähltesDatum.AddDays(7);
+                generiereWochenplan(null);
+            }
+        }
+        private void Zurueck(object sender, RoutedEventArgs e)
+        {
+            if (AnzahlSpalten == 1)
+            {
+                if ((int) ausgewähltesDatum.DayOfWeek == 1)
+                {
+                    ausgewähltesDatum = ausgewähltesDatum.AddDays(-3);
+                }
+                else
+                {
+                    ausgewähltesDatum = ausgewähltesDatum.AddDays(-1);
+                }
+                generiereWochenplan((int)ausgewähltesDatum.DayOfWeek);
+            }
+            else
+            {
+                ausgewähltesDatum = ausgewähltesDatum.AddDays(-7);
+                generiereWochenplan(null);
+            }
         }
     }
 }
