@@ -12,14 +12,12 @@ namespace Stundenplan
     public partial class MainWindow : Window
     {
         private DateTime ausgewähltesDatum = DateTime.Now;
-        private List<Schultag> liste;
         public Wochenplan WochenplanData
         {
             get => (Wochenplan)GetValue(WochenplanDataProperty);
             set => SetValue(WochenplanDataProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for AusgewaehlteStunde.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty WochenplanDataProperty =
             DependencyProperty.Register("WochenplanData", typeof(Wochenplan), typeof(MainWindow), new PropertyMetadata(null));
 
@@ -29,7 +27,6 @@ namespace Stundenplan
             set => SetValue(AnzahlSpaltenProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for AusgewaehlteStunde.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty AnzahlSpaltenProperty =
             DependencyProperty.Register("AnzahlSpalten", typeof(int), typeof(MainWindow), new PropertyMetadata(5));
 
@@ -39,7 +36,6 @@ namespace Stundenplan
             set => SetValue(ZeitraumProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for AusgewaehlteStunde.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ZeitraumProperty =
             DependencyProperty.Register("Zeitraum", typeof(string), typeof(MainWindow), new PropertyMetadata(null));
 
@@ -67,8 +63,12 @@ namespace Stundenplan
         {
             Fach Mathe = new Fach("Mathe", Brushes.DeepSkyBlue, "Herr Müller");
             Fach Englisch = new Fach("Englisch", Brushes.Red, "Frau Meier");
-            Fach Sport = new Fach("Sport", Brushes.Green, "Herr Kamp");
+            Fach Sport = new Fach("Sport", Brushes.DimGray, "Herr Kamp");
             Fach Informatik = new Fach("Informatik", Brushes.Cyan, "Frau Reich");
+            Fach Biologie = new Fach("Biologie", Brushes.Green, "Frau Baum");
+            Fach Religion = new Fach("Religion", Brushes.White, "Herr Lich");
+            Fach Erdkunde = new Fach("Erdkunde", Brushes.Brown, "Herr Vorragend");
+            Fach Frei = new Fach("Frei", Brushes.Gold, "");
 
             var kalenderwoche = (ausgewähltesDatum.DayOfYear / 7) + 1;
             var liste = new List<Schultag>();
@@ -77,7 +77,8 @@ namespace Stundenplan
                 Schultag montag = new Schultag("Montag", new List<Stunde> 
                 {
                     new Stunde(Mathe, "D123", 1), 
-                    new Stunde(Englisch, "D123", 3)
+                    new Stunde(Englisch, "D123", 3),
+                    new Stunde(Biologie, "D123", 4),
 
                 }); 
                 if (kalenderwoche % 2 == 0) 
@@ -95,7 +96,10 @@ namespace Stundenplan
             {
                 Schultag dienstag = new Schultag("Dienstag", new List<Stunde>
                 {
-                    new Stunde(Sport, "Sporthalle",1)
+                    new Stunde(Sport, "Sporthalle",1),
+                    new Stunde(Sport, "Sporthalle",2),
+                    new Stunde(Informatik, "Sporthalle",3),
+                    new Stunde(Informatik, "Sporthalle",4)
                 }); 
                 dienstag.Stunden.Sort((x, y) => x.StundenID > y.StundenID ? 1 : -1); 
                 liste.Add(dienstag);
@@ -104,7 +108,10 @@ namespace Stundenplan
             {
                 Schultag mittwoch = new Schultag("Mittwoch", new List<Stunde>
                 {
-                    new Stunde(Englisch, "D212",1)
+                    new Stunde(Biologie, "Sporthalle",1),
+                    new Stunde(Biologie, "Sporthalle",2),
+                    new Stunde(Erdkunde, "Sporthalle",3),
+                    new Stunde(Erdkunde, "Sporthalle",4)
                 }); 
                 mittwoch.Stunden.Sort((x, y) => x.StundenID > y.StundenID ? 1 : -1); 
                 liste.Add(mittwoch);
@@ -113,7 +120,10 @@ namespace Stundenplan
             {
                 Schultag donnerstag = new Schultag("Donnerstag", new List<Stunde>
                 {
-                    new Stunde(Informatik, "D123",1)
+                    new Stunde(Mathe, "Sporthalle",1),
+                    new Stunde(Englisch, "Sporthalle",2),
+                    new Stunde(Biologie, "Sporthalle",3),
+                    new Stunde(Biologie, "Sporthalle",4)
                 }); 
                 donnerstag.Stunden.Sort((x, y) => x.StundenID > y.StundenID ? 1 : -1); 
                 liste.Add(donnerstag);
@@ -122,7 +132,10 @@ namespace Stundenplan
             {
                 Schultag freitag = new Schultag("Freitag", new List<Stunde>
                 {
-                    new Stunde(Informatik, "D123",1)
+                    new Stunde(Mathe, "Sporthalle",1),
+                    new Stunde(Mathe, "Sporthalle",2),
+                    new Stunde(Frei, "Sporthalle",3),
+                    new Stunde(Frei, "Sporthalle",4)
                 }); 
                 freitag.Stunden.Sort((x, y) => x.StundenID > y.StundenID ? 1 : -1); 
                 liste.Add(freitag);
