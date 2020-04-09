@@ -53,13 +53,30 @@
                                           Margin="0,7,0,0">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate DataType="{x:Type Klassen:Stunde}">
-                                        <Button Margin="3"
-                                                Padding="3,1"
-                                                Background="{Binding Color}">
-                                            <Grid>
-                                                <TextBlock Text="{Binding Titel}"
-                                                           TextWrapping="Wrap" />
-                                            </Grid>
+                                        <Button Background="{Binding Color}"
+                                                Margin="3"
+                                                Padding="3,1">
+                                            <Button.Content>
+                                                <TextBlock Text="{Binding Titel}" TextWrapping="Wrap"/>
+                                            </Button.Content>
+                                            <Button.ToolTip>
+                                                <TextBlock>
+                                                    <Grid>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="45"/>
+                                                            <ColumnDefinition Width="auto"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <TextBlock Text="Lehrer" FontWeight="Bold"/>
+                                                        <TextBlock Grid.Column="1" Text="{Binding Lehrer}"/>
+                                                        <TextBlock Grid.Row="1" Text="Raum" FontWeight="Bold"/>
+                                                        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Raum}"/>
+                                                    </Grid>
+                                                </TextBlock>
+                                            </Button.ToolTip>
                                         </Button>
                                     </DataTemplate>
                                 </ItemsControl.ItemTemplate>
